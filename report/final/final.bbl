@@ -1,0 +1,64 @@
+\begin{thebibliography}{8}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Berant et~al.(2025)Berant, Chen, Fisch, Aghajani, Huot, Lapata, and
+  Eisenstein]{berant2025steerable}
+Jonathan Berant, Maximillian Chen, Adam Fisch, Reza Aghajani, Fantine Huot,
+  Mirella Lapata, and Jacob Eisenstein.
+\newblock Learning steerable clarification policies with collaborative
+  self-play.
+\newblock \emph{arXiv preprint arXiv:2512.04068}, 2025.
+
+\bibitem[Carlsson and Dubhashi(2023)]{carlsson2023structured}
+Emil Carlsson and Devdatt Dubhashi.
+\newblock Pragmatic reasoning in structured signaling games.
+\newblock \emph{arXiv preprint arXiv:2305.10167}, 2023.
+
+\bibitem[Cohn-Gordon et~al.(2018)Cohn-Gordon, Goodman, and
+  Potts]{cohn2018pragmatically}
+Reuben Cohn-Gordon, Noah Goodman, and Christopher Potts.
+\newblock Pragmatically informative image captioning with character-level
+  inference.
+\newblock In \emph{Proceedings of the 2018 Conference of the North American
+  Chapter of the Association for Computational Linguistics}, 2018.
+
+\bibitem[Fried et~al.(2018)Fried, Andreas, and Klein]{fried2017pragmatic}
+Daniel Fried, Jacob Andreas, and Dan Klein.
+\newblock Unified pragmatic models for generating and following instructions.
+\newblock In \emph{Proceedings of the 2018 Conference of the North American
+  Chapter of the Association for Computational Linguistics: Human Language
+  Technologies}, 2018.
+\newblock URL \url{https://aclanthology.org/N18-1177}.
+
+\bibitem[Gul and Artzi(2024)]{gul2024cogen}
+Mustafa~Omer Gul and Yoav Artzi.
+\newblock Cogen: Learning from feedback with coupled comprehension and
+  generation.
+\newblock \emph{arXiv preprint arXiv:2408.15992}, 2024.
+
+\bibitem[Jian and Siddharth(2024)]{jian2024llmpragmatic}
+Mingyue Jian and N.~Siddharth.
+\newblock Are llms good pragmatic speakers?
+\newblock \emph{arXiv preprint arXiv:2411.01562}, 2024.
+
+\bibitem[Ma et~al.(2025)Ma, Ding, Zhang, Luo, Ding, Xu, Huang, Peng, and
+  Chai]{ma2025vision}
+Ziqiao Ma, Jing Ding, Xuejun Zhang, Dezhi Luo, Jiahe Ding, Sihan Xu, Yuchen
+  Huang, Run Peng, and Joyce Chai.
+\newblock Vision-language models are not pragmatically competent in referring
+  expression generation.
+\newblock \emph{arXiv preprint arXiv:2504.16060}, 2025.
+
+\bibitem[Ou et~al.(2023)Ou, Krojer, and Fried]{ou2023clip}
+Jiefu Ou, Benno Krojer, and Daniel Fried.
+\newblock Pragmatic inference with a {CLIP} listener for contrastive
+  captioning.
+\newblock In \emph{Findings of the Association for Computational Linguistics:
+  ACL 2023}, pages 1904--1917, 2023.
+\newblock URL \url{https://aclanthology.org/2023.findings-acl.120}.
+
+\end{thebibliography}

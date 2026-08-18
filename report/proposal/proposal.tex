@@ -1,0 +1,261 @@
+% \documentclass[11pt]{article}
+
+% % -------------------------
+% % Packages
+% % -------------------------
+% \usepackage[margin=1in]{geometry}
+% \usepackage{amsmath, amssymb}
+% \usepackage{graphicx}
+% \usepackage{booktabs}
+% \usepackage{enumitem}
+% \usepackage{hyperref}
+
+% \hypersetup{
+%     colorlinks=true,
+%     linkcolor=blue,
+%     urlcolor=blue,
+%     citecolor=blue
+% }
+
+% % -------------------------
+% % Title
+% % -------------------------
+% \title{Ambiguity Resolution in Large Language Models:\\
+% A Decision-Theoretic Evaluation of Pragmatic Inference and Clarification}
+
+% \author{
+% Thomas Lee, Ziyu Ge, Shizhe Zhang \\
+% \texttt{\{tholee, ziyuge, shizhe\_zhang\}@berkeley.edu}
+% }
+
+% \date{}
+
+% \begin{document}
+
+% \maketitle
+
+% % -------------------------
+% % Abstract
+% % -------------------------
+% \begin{abstract}
+
+% Large language models (LLMs) often encounter ambiguous natural language instructions, yet their strategies for resolving ambiguity remain poorly understood. We introduce a controlled synthetic reference game to evaluate how LLMs trade off implicit pragmatic inference against explicit clarification. In our environment, scenes consist of compositional objects defined by structured attributes, and communicative goals require identifying a target object among distractors. We compare two decision mechanisms: (1) recursive pragmatic inference inspired by Rational Speech Act (RSA) modeling, and (2) a clarification-augmented strategy that allows the model to ask at most one binary question before committing to a prediction.
+
+% We evaluate models across systematically varied ambiguity regimes and measure listener accuracy, expected utility under clarification costs, calibration, and clarification frequency. By restricting the study to fully synthetic environments and prompt-based inference (without fine-tuning), we isolate reasoning and decision behavior from memorized knowledge. Our framework provides a principled, decision-theoretic lens for analyzing when LLMs choose to infer versus inquire, offering insights into robustness, uncertainty handling, and communicative rationality in modern language models.
+
+% \end{abstract}
+
+% % -------------------------
+% \section{Introduction}
+
+% Ambiguity is a fundamental property of natural language. Humans routinely resolve ambiguity through pragmatic reasoning or by asking clarifying questions. Large language models (LLMs) exhibit impressive performance across tasks, yet their behavior under controlled ambiguity remains under-characterized.
+
+% In particular, it is unclear whether LLMs:
+% \begin{itemize}
+%     \item rely primarily on implicit pragmatic inference,
+%     \item appropriately quantify uncertainty,
+%     \item or strategically choose to ask clarifying questions when uncertainty is high.
+% \end{itemize}
+
+% This paper proposes a synthetic evaluation framework that enables controlled measurement of these behaviors under a decision-theoretic lens.
+
+% % -------------------------
+% \section{Problem Definition and Scope}
+
+% \textbf{Task Overview.}
+
+% We study referential ambiguity in a structured mini-world. Each scene contains multiple objects defined by compositional attributes such as color, shape, size, and spatial position.
+
+% \textbf{Input.}
+% \begin{itemize}
+%     \item A scene with $N$ objects.
+%     \item A communicative goal specifying a target object.
+% \end{itemize}
+
+% Depending on the role:
+% \begin{itemize}
+%     \item \textbf{Speaker:} Given a target object, generate a description.
+%     \item \textbf{Listener:} Given a description, select the correct object.
+% \end{itemize}
+
+% The listener may either:
+% \begin{enumerate}
+%     \item Perform implicit pragmatic inference (LLM-RSA), or
+%     \item Ask at most one binary clarification question before making a prediction.
+% \end{enumerate}
+
+% \textbf{Output.}
+
+% A final object prediction (listener) or a natural language description (speaker), optionally preceded by a single clarification question.
+
+% \textbf{Success Criteria.}
+
+% Primary metric:
+% \[
+% \text{Accuracy} = \frac{\text{Correct Predictions}}{\text{Total Instances}}
+% \]
+
+% Secondary metrics:
+% \begin{itemize}
+%     \item Expected utility under clarification cost $c$,
+%     \item Brier score,
+%     \item Expected Calibration Error (ECE),
+%     \item Clarification frequency.
+% \end{itemize}
+
+% \textbf{Scope Restrictions.}
+
+% \begin{itemize}
+%     \item Fully synthetic scenes.
+%     \item Controlled ambiguity via attribute overlap.
+%     \item No model fine-tuning.
+%     \item Prompt-based or likelihood-based inference only.
+% \end{itemize}
+
+% % -------------------------
+% \section{Methodology}
+
+% \subsection{Synthetic Environment}
+
+% Scenes are generated from a structured attribute space:
+% \[
+% \mathcal{O} = \text{Color} \times \text{Shape} \times \text{Size} \times \text{Position}
+% \]
+
+% Ambiguity is controlled via referential entropy:
+% \[
+% H(T \mid u)
+% \]
+
+% where $T$ is the target and $u$ is the utterance.
+
+% \subsection{Pragmatic Inference (LLM-RSA)}
+
+% We approximate recursive pragmatic reasoning:
+
+% \[
+% P_{L_1}(t \mid u) \propto P_{S_0}(u \mid t) P(t)
+% \]
+
+% where $S_0$ is approximated using LLM likelihoods.
+
+% \subsection{Clarification Strategy}
+
+% We introduce a decision rule:
+
+% \[
+% \text{Ask if } \mathbb{E}[\text{Utility}_{ask}] > \mathbb{E}[\text{Utility}_{commit}]
+% \]
+
+% Utility incorporates clarification cost $c$.
+
+% % -------------------------
+% \section{Evaluation}
+
+% We evaluate across:
+% \begin{itemize}
+%     \item Increasing distractor counts
+%     \item Varying attribute overlap
+%     \item Different clarification costs
+% \end{itemize}
+
+% We analyze:
+% \begin{itemize}
+%     \item Accuracy vs ambiguity
+%     \item Calibration under uncertainty
+%     \item Optimal vs observed clarification rates
+% \end{itemize}
+
+% % -------------------------
+% \section{Discussion}
+
+% This framework isolates decision-making behavior in LLMs under controlled ambiguity. By comparing implicit inference and explicit clarification, we gain insight into communicative rationality and uncertainty handling in modern language models.
+
+% Future extensions may include multi-turn dialogue, learned clarification policies, and fine-tuned pragmatic agents.
+
+% % -------------------------
+% \section{Conclusion}
+
+% We introduce a decision-theoretic framework for evaluating ambiguity resolution in LLMs. Our synthetic reference game provides precise control over uncertainty and enables systematic comparison of pragmatic inference and clarification strategies. This work lays groundwork for more principled analysis of communicative behavior in language models.
+
+% % -------------------------
+% \bibliographystyle{plain}
+% \bibliography{references}
+
+% \end{document}
+
+\documentclass[10pt]{article}
+
+\usepackage[margin=0.8in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{hyperref}
+
+\title{Ambiguity Resolution in Large Language Models:\\
+A Decision-Theoretic Study of Pragmatic Inference and Clarification}
+
+\author{
+Thomas Lee, Ziyu Ge, Shizhe Zhang \\
+\texttt{\{tholee, ziyuge, shizhe\_zhang\}@berkeley.edu}
+}
+
+\date{}
+
+\begin{document}
+\maketitle
+
+\noindent
+\textbf{Problem.}
+Large language models (LLMs) frequently encounter ambiguous instructions, yet it remains unclear how they balance implicit inference against explicit clarification. We study ambiguity resolution in a controlled synthetic reference game.
+
+Each instance consists of:
+\begin{itemize}
+    \item \textbf{Input:} A scene containing $N$ objects defined by structured attributes (color, shape, size, position), and a natural language description referring to a target object.
+    \item \textbf{Output:} A predicted target object. The model may optionally ask at most one binary clarification question before committing.
+\end{itemize}
+
+Ambiguity is systematically controlled via attribute overlap and referential entropy $H(T \mid u)$, where $T$ denotes the target and $u$ the utterance.
+
+Primary success metric is accuracy:
+\[
+\text{Accuracy} = \frac{\text{Correct Predictions}}{\text{Total Instances}}.
+\]
+Secondary metrics include expected utility under clarification cost $c$, Brier score, Expected Calibration Error (ECE), and clarification frequency.
+
+\vspace{0.5em}
+\noindent
+\textbf{Method.}
+We compare two decision mechanisms:
+
+\textit{(1) Pragmatic Inference (LLM-RSA).}  
+We approximate recursive reasoning inspired by Rational Speech Act (RSA) modeling:
+\[
+P_{L_1}(t \mid u) \propto P_{S_0}(u \mid t) P(t),
+\]
+where $P_{S_0}(u \mid t)$ is estimated using LLM likelihoods. The model selects the object with maximal posterior probability.
+
+\textit{(2) Clarification-Augmented Strategy.}  
+The model may ask one binary question before predicting. A decision rule compares expected utilities:
+\[
+\text{Ask if } \mathbb{E}[U_{\text{ask}}] > \mathbb{E}[U_{\text{commit}}],
+\]
+where utility incorporates both prediction accuracy and clarification cost $c$.
+
+All experiments use fully synthetic scenes and prompt-based inference without fine-tuning, isolating reasoning behavior from memorized knowledge.
+
+\vspace{0.5em}
+\noindent
+\textbf{Anticipated Results.}
+We expect that:
+\begin{itemize}
+    \item Pure pragmatic inference performs well under low ambiguity but degrades as distractors increase.
+    \item Clarification improves accuracy in high-entropy regimes when $c$ is moderate.
+    \item LLMs may under- or over-ask relative to the decision-theoretic optimum, revealing miscalibration.
+    \item Calibration metrics will expose whether confidence tracks ambiguity.
+\end{itemize}
+
+\vspace{0.5em}
+\noindent
+\textbf{Why It Matters.}
+Ambiguity is central to real-world human--AI interaction. Systems that overcommit risk errors; systems that over-ask harm usability. Our framework provides a principled, decision-theoretic lens for analyzing when LLMs infer versus inquire. By isolating ambiguity under controlled conditions, this work contributes to understanding uncertainty handling, communicative rationality, and robustness in modern language models.
+
+\end{document}
